@@ -8,20 +8,14 @@ var weatherIcon = document.querySelector('#weather-icon');
 var temperature = document.querySelector('#temperature');
 var humidity = document.querySelector('#humidity');
 var windSpeed = document.querySelector('#wind-speed');
-var forecastTable = document.querySelector('#forecast-table');
+var forecastTable = document.querySelector('#five-day-forecast');
 
 
 /* Function to update the weather information in the HTML file */
 
 function updateWeatherInfo(data) {
-  cityName.textContent = data.name;
-  weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
-  temperature.textContent = `Temperature: ${Math.round(data.main.temp - 273.15)}°C`;
-  humidity.textContent = `Humidity: ${data.main.humidity}%`;
-  windSpeed.textContent = `Wind Speed: ${data.wind.speed} m/s`;
-}
-
-  // update forecast table
+ var data = JSON.parse(localStorage.getItem('weatherData'));
+ console.log(data)
   var forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
   forecastTable.innerHTML = '';
   forecastData.forEach(item => {
@@ -42,15 +36,16 @@ function updateWeatherInfo(data) {
     `;
     forecastTable.appendChild(tr);
   });
-
+}
 /* // Function to fetch weather data for the entered city */
 
 function getWeatherData(city) {
-  var url = `${apiUrl}?q=${city}&appid=${apiKey}`;
+  var url = `${apiUrlForecast}?q=${city}&appid=${apiKey}`;
   fetch(url)
     .then(response => response.json())
     .then(data => {
-      updateWeatherInfo(data);
+     localStorage.setItem('weatherData', JSON.stringify(data));
+     updateWeatherInfo(data);
     })
     .catch(error => {
       console.error('Error:', error);
