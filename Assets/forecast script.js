@@ -10,6 +10,7 @@ var humidity = document.querySelector('#humidity');
 var windSpeed = document.querySelector('#wind-speed');
 var forecastTable = document.querySelector('#five-day-forecast');
 
+var savedCities = [];
 
 /* Function to update the weather information in the HTML file */
 
@@ -44,7 +45,6 @@ function getWeatherData(city) {
   fetch(url)
     .then(response => response.json())
     .then(data => {
-     localStorage.setItem('weatherData', JSON.stringify(data));
      updateWeatherInfo(data);
     })
     .catch(error => {
@@ -56,6 +56,10 @@ function getWeatherData(city) {
 
 searchForecastButton.addEventListener('click', () => {
   var city = cityNameInput.value.trim();
+
+  savedCities.push()
+
+  localStorage.setItem('savedCities', JSON.stringify(city));
   cityNameInput.value = '';
   if (city) {
     getWeatherData(city);
