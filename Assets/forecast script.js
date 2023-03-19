@@ -37,7 +37,7 @@ function updateWeatherInfo(data) {
     forecastTable.appendChild(tr);
   });
 }
-/* // Function to fetch weather data for the entered city */
+// Function to fetch weather data for the entered city 
 
 function getWeatherData(city) {
   var url = `${apiUrlForecast}?q=${city}&appid=${apiKey}`;
@@ -72,3 +72,8 @@ cityNameInput.addEventListener('keyup', event => {
   }
 });
 
+// Check if there is weather data stored in localStorage and update the weather information
+if (localStorage.getItem('weatherData')) {
+    updateWeatherInfo();
+  }
+  
