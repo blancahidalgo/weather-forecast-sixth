@@ -10,7 +10,7 @@ var humidity = document.querySelector('#humidity');
 var windSpeed = document.querySelector('#wind-speed');
 var forecastTable = document.querySelector('#five-day-forecast');
 
-var savedCities = [];
+// var savedCities = [];  (THIS IS FOR FUTURE WHEN ADDING LOCAL STORAGE)
 
 /* Function to update the weather information in the HTML file */
 // var forecastData = filters the forecast data to only include items with a time of 12:00:00 (using the filter method of the 'list' property of the 'data' object)
