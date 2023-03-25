@@ -13,10 +13,14 @@ var forecastTable = document.querySelector('#five-day-forecast');
 var savedCities = [];
 
 /* Function to update the weather information in the HTML file */
+// var forecastData = filters the forecast data to only include items with a time of 12:00:00 (using the filter method of the 'list' property of the 'data' object)
+// next function clears any data from from within the 'forecastTable' HTML element. Then it iteratws over the foltered forecastData array using the forEach method
+// for each item, the function extracts date & time from 'dt_txt' property & formats it using 'toLocaleDateString' and 'toLocaledTimeString' methods
+// then constructs the wweather icon 
+// temp, humidity & windSpeed  are also extracted 
+// then we create a new table row element 'tr' using the createElement method, then populates weather data and appends forecastTable to it 
 
 function updateWeatherInfo(data) {
- var data = JSON.parse(localStorage.getItem('weatherData'));
- console.log(data)
   var forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
   forecastTable.innerHTML = '';
   forecastData.forEach(item => {
@@ -38,8 +42,9 @@ function updateWeatherInfo(data) {
     forecastTable.appendChild(tr);
   });
 }
-// Function to fetch weather data for the entered city 
 
+
+// this function will fetch weather data just like in the main script.js file 
 function getWeatherData(city) {
   var url = `${apiUrlForecast}?q=${city}&appid=${apiKey}`;
   fetch(url)
@@ -52,21 +57,17 @@ function getWeatherData(city) {
     });
 }
 
-// Event listener for the search button
-
+// same as script. js
 searchForecastButton.addEventListener('click', () => {
   var city = cityNameInput.value.trim();
-
   savedCities.push()
-
-  localStorage.setItem('savedCities', JSON.stringify(city));
   cityNameInput.value = '';
   if (city) {
     getWeatherData(city);
   }
 });
 
-// Event listener for the Enter key press in the city search input
+// same as script. js
 cityNameInput.addEventListener('keyup', event => {
   if (event.key === 'Enter') {
     const city = cityNameInput.value.trim();
@@ -76,8 +77,8 @@ cityNameInput.addEventListener('keyup', event => {
   }
 });
 
-// Check if there is weather data stored in localStorage and update the weather information
-if (localStorage.getItem('weatherData')) {
-    updateWeatherInfo();
-  }
+// // Check if there is weather data stored in localStorage and update the weather information
+// if (localStorage.getItem('weatherData')) {
+//     updateWeatherInfo();
+//   }
   
