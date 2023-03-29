@@ -102,6 +102,8 @@ function getWeatherForecast(city) {
 // line 55 clears the 'cityNameInput' space/value so we can enter a new search in a clean space (SHOULD I ADD LOCA STORAGE HERE BEFORE CLEARING THE SEARCH??)
 // line 57 checks if a valid city name was entered / if true, the getWeatherdata(city); will execute! 
 
+
+// Event listener when using the button to retrieve Today's Forecast 
 searchButton.addEventListener('click', () => {
   var city = cityNameInput.value.trim();
   cityNameInput.value = '';
@@ -109,9 +111,6 @@ searchButton.addEventListener('click', () => {
     getWeatherData(city);
   }
 });
-
-// This is a second eventListener prompted by the 'keyup' in addition to 'click' in the function above
-// DO I NEED BOTH?
 
 cityNameInput.addEventListener('keyup', event => {
   if (event.key === 'Enter') {
@@ -122,23 +121,23 @@ cityNameInput.addEventListener('keyup', event => {
   }
 });
 
-searchButton.addEventListener('click', () => {
-  const city = cityNameInput.value.trim();
-  if (city) {
-    getWeatherData(city);
-}
-});
-
-
+// Event listener when using the button to retrieve the next 5 day Forecast 
 searchForecastButton.addEventListener('click', () => {
   var city = cityNameInput.value.trim();
-  savedCities.push()
   cityNameInput.value = '';
   if (city) {
     getWeatherForecast(city);
   }
 });
 
+cityNameInput.addEventListener('keyup', event => {
+  if (event.key === 'Enter') {
+    const city = cityNameInput.value.trim();
+    if (city) {
+      getWeatherForecast(city);
+    }
+  }
+});
 
 
 
