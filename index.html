@@ -1,77 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast</title>
     <link rel="stylesheet" href="./Assets/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap" />
 
 </head>
+
 <body>
-    <div class="weather">
-         <input type="search" id="city" class="search_bar" placeholder="Search City">
-         <div class="weather_today">
-              <button type="button" class="btn btn-search-today"><p>What's the weather like?</p>  
-                <i class="fas fa-search"> </i>
-              </button>
-              <!-- <button type="button" class="btn btn-search-forecast"><p>Explore the Weather in the next 5 days</p>
-                <i class="fas fa-search"></i>
-             </button> -->
-             
-            <h2 class="weather_city">City</div>
+    <div class="parent">
+        <div class="weather">
+            <div class="weather_today">
+                <button type="button" class="btn btn-search-today">
+                    <p>What's the weather like?</p>
+                    <i class="fas fa-search"> </i>
+                </button>
+            </div>
+            <input type="search" id="city" class="search_bar" placeholder="Search City">
+
+            <div class="city-history">
+                <h2 class="weather_city">City </h2>
                 <div id="search-history-container">
-
                 </div>
-            <article class="weather_details"> 
-                  <p class="weather_today"><h2> Weather in </h2></p>
-                  <div class="weather_current"></div>
-                        <img src="" alt="" id="weather-icon">
-                        <p class="weather_indicator" id="temperature"><span class="value"></span></p>
-                        <p class="weather_indicator" id="humidity"><span class="value"></span></p>
-                        <p class="weather_indicator" id="wind-speed"><span class="value"></span></p>
-             </article>
-         </div>
-
-         <div class="weather_forecast" id="five-day-forecast">
-
-             <article class="weather_forecast_item">
-              <h3 class="weather_forecast_day"></h3>
-              <img src="" alt="" id="weather-icon">
-              <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
-             </article>
-
-              <article class="weather_forecast_item" id="five-day-forecast">
-                <h3 class="weather_forecast_day"></h3>
+            </div>
+        </div>
+        <div class="container">
+            <article class="weather_details">
+                <p class="weather_today">
+                <h2> Weather in <span id="cityVal"></span></h2>
+                <p id="date-time"></p>
+                </p>
+                <div class="weather_current"></div>
                 <img src="" alt="" id="weather-icon">
-                <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
-              </article>
+                <p class="weather_indicator" id="temperature"><span class="value"></span></p>
+                <p class="weather_indicator" id="humidity"><span class="value"></span></p>
+                <p class="weather_indicator" id="wind-speed"><span class="value"></span></p>
+            </article>
 
-              <article class="weather_forecast_item" id="five-day-forecast">
-                <h3 class="weather_forecast_day"></h3>
-                <img src="" alt="" id="weather-icon">
-                <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
-              </article>
 
-              <article class="weather_forecast_item" id="five-day-forecast">
-                <h3 class="weather_forecast_day"></h3>
-                <img src="" alt="" id="weather-icon">
-                <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
-              </article>
+            <div class="weather_forecast" id="five-day-forecast"><h2> 5 Day Forecast </h2> 
+           
+                <article class="weather_forecast_item">
+                    <h3 class="weather_forecast_day"></h3>
+                    <img src="" alt="" id="weather-icon">
+                    <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
+                </article>
 
-              <article class="weather_forecast_item" id="five-day-forecast">
-                <h3 class="weather_forecast_day"></h3>
-                <img src="" alt="" id="weather-icon">
-                <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
-              </article>
-         </div>
+                <article class="weather_forecast_item" id="five-day-forecast">
+                    <h3 class="weather_forecast_day"></h3>
+                    <img src="" alt="" id="weather-icon">
+                    <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
+                </article>
+
+                <article class="weather_forecast_item" id="five-day-forecast">
+                    <h3 class="weather_forecast_day"></h3>
+                    <img src="" alt="" id="weather-icon">
+                    <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
+                </article>
+
+                <article class="weather_forecast_item" id="five-day-forecast">
+                    <h3 class="weather_forecast_day"></h3>
+                    <img src="" alt="" id="weather-icon">
+                    <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
+                </article>
+
+                <article class="weather_forecast_item" id="five-day-forecast">
+                    <h3 class="weather_forecast_day"></h3>
+                    <img src="" alt="" id="weather-icon">
+                    <p class="weather_forecast_results"> <span class="value"></span>&deg;</p>
+                </article>
+            </div>
+        </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.7/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <script src="./Assets/script.js"></script>
 
 </body>
+
 </html>

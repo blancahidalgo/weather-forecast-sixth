@@ -35,6 +35,12 @@ function displaySearchHistory() {
     searchHistoryContainer.appendChild(searchItem)
   }
 }
+
+var dateTimeEl = document.querySelector('#date-time')
+const now = dayjs()
+const dateFormatted = now.format('MMMM D, YYYY h:mm A')
+dateTimeEl.textContent = dateFormatted;
+console.log(dateFormatted);
 /* // Function to update the weather information in the HTML file */
     //this sets the text content --> 'cityName' element to the name of the city returned by the API 
     //'weatherIcon.src = xxx sets the source attribute of the 'weatherIcon' element in the URL 
@@ -56,6 +62,7 @@ function updateWeatherData(data) {
     //the second .then method is called on the JSON data returned from the above ^^ - then we take the 'data' object as an object and we pass it on to 'updateWeatherInfo() function to update weather in the UI 
     //the .catch method will handle any erorrs that may occur during the fetch request or JSON conversion
 
+    var cityValEl = document.querySelector('#cityVal')
 function getWeatherData(city) {
   var url = `${apiUrl}?q=${city}&appid=${apiKey}`;
   fetch(url)
@@ -64,6 +71,7 @@ function getWeatherData(city) {
       console.log('hit')
       updateWeatherData(data);
       savedCities.push(city)
+      cityValEl.textContent = city
       localStorage.setItem('searchHistory', JSON.stringify(savedCities))
       displaySearchHistory()
     })
