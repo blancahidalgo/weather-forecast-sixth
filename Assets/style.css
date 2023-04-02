@@ -1,26 +1,78 @@
-* {
-    background: black;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-style: normal;
-    color: purple;
+@font-face {
+    font-family: 'Open Sans';
+    src: url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
+    font-weight: 300;
 }
 
+/* This is starting to style the body content */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
     height: 100vh;
     margin: 0;
-
+    background-image: radial-gradient (circle, black 0%, black 28%, black 32%, black 100%);
+    color: white;
+    font-family: 300;
+    font-size: 22px;
 }
 
-.card {
-    background: rgb(241, 241, 127);
-    padding: 2em;
-    border-radius: 30px;
+/* This is styling/sizing the whole div in which all the weather resutls will pop up   */
+.weather {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px 0;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+/* This is styling the search bar */
+.search_bar {
     width: 100%;
-    max-width: 420px;
-    margin: 1em;
-    color: rgb(11, 11, 160);
+    padding: 15px 10px;
+    border: none;
+    background-color: rgb(195, 188, 188);
+    font-size: 20px;
+    color: inherit;
 }
+/* This will make sure the text inpout within the search bar is white - following styling across the page */
+.weather_search::placeholder {
+    color:white;
+}
+
+/* This provides xxx to the weather_today section */
+.weather_today {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* A bit of styling for the weather icon */
+#weather-icon {
+    width: 30vmin;
+    align-self: center;
+}
+
+/* From here onwards we sre styling the data that pops into Todays Weather section */
+.weather_city {
+    font-size:36px;
+    font-weight: 600;
+    margin: 20px 0;
+}
+
+.weather_day {
+   font-size: 30px;
+   margin: 10px 0;
+   font-weight: 400px;
+}
+
+.weather_indicator::before {
+   content: '';
+   display: inline-block;
+   vertical-align: middle;
+   width: 30px;
+   height: 30px;
+   background-size: cover;
+   margin-right: 10px;
+}
+
+
 
