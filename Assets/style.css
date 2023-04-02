@@ -9,7 +9,7 @@ body {
     width: 100%;
     height: 100vh;
     margin: 0;
-    background-image: radial-gradient (circle, black 0%, black 28%, black 32%, black 100%);
+    background-color: rgb(93, 93, 188);
     color: white;
     font-family: 300;
     font-size: 22px;
@@ -30,10 +30,13 @@ body {
     width: 100%;
     padding: 15px 10px;
     border: none;
+    border-radius: 5px;
     background-color: rgb(195, 188, 188);
     font-size: 20px;
     color: inherit;
+    margin-bottom:20px;
 }
+
 /* This will make sure the text inpout within the search bar is white - following styling across the page */
 .weather_search::placeholder {
     color:white;
@@ -43,6 +46,7 @@ body {
 .weather_today {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 /* A bit of styling for the weather icon */
@@ -74,5 +78,43 @@ body {
    margin-right: 10px;
 }
 
+.weather_temperature { 
+   font-size: 60px;
+}
 
+/* Now 5 day forecast styling */
 
+.weather_forecast {
+   width: 100%;
+   text-align: center;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+
+#weather-icon {
+   max-width: 50%;
+}
+
+.weather_forecast_item {
+  background-color:rgb(244, 236, 236);
+  border-radius: 10px;
+  margin: 0 10px 10px;
+  padding: 30px 5px 20px;
+  box-sizing: border-box;
+  min-width: 20px;
+  width: calc (20% -20px);
+  flex-grow: 1;
+}
+
+.btn-dark {
+  background-color:rgb(237, 228, 228);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.btn-light {
+  background-color:rgb(243, 233, 233);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
