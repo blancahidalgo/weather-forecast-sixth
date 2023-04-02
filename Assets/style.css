@@ -36,6 +36,17 @@ body {
     color: inherit;
     margin-bottom:20px;
 }
+/* 
+ .weather_details {
+    background-color:rgb(155, 180, 215);
+    border-radius: 10px;
+    /* margin: 0 10px 10px; */
+    /* padding: 30px 5px 20px; */
+    /* box-sizing: border-box; */
+    /* min-width: 20px; */
+    /* width: calc (20% -20px); */
+    /* flex-grow: 1;   */
+/* }  */
 
 /* This will make sure the text inpout within the search bar is white - following styling across the page */
 .weather_search::placeholder {
@@ -107,14 +118,9 @@ body {
   flex-grow: 1;
 }
 
-.btn-dark {
+.btn-search-today .btn-search-forecast {
   background-color:rgb(237, 228, 228);
   border-radius: 10px;
   box-sizing: border-box;
 }
 
-.btn-light {
-  background-color:rgb(243, 233, 233);
-  border-radius: 10px;
-  box-sizing: border-box;
-}

@@ -65,7 +65,8 @@ function updateWeatherForecast(data) {
   var forecastData = data.list.filter(item => item.dt_txt.includes('12:00:00'));
   forecastTable.innerHTML = '';
   forecastData.forEach(item => {
-    var tr = document.createElement('tr');
+    var article = document.createElement('article');
+    article.classList.add("weather_forecast_item");
     var date = new Date(item.dt_txt);
     var day = date.toLocaleDateString('en-US', { weekday: 'short' });
     var time = date.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
@@ -73,14 +74,21 @@ function updateWeatherForecast(data) {
     var temp = Math.round(item.main.temp - 273.15);
     var humidity = item.main.humidity;
     var windSpeed = item.wind.speed;
-    tr.innerHTML = `
-      <td>${day} ${time}</td>
-      <td><img src="${iconUrl}" alt="${item.weather[0].description}"></td>
-      <td>${temp}°C</td>
-      <td>${humidity}%</td>
-      <td>${windSpeed} m/s</td>
-    `;
-    forecastTable.appendChild(tr);
+    // tr.innerHTML = `
+    //   <td>${day} ${time}</td>
+    //   <td><img src="${iconUrl}" alt="${item.weather[0].description}"></td>
+    //   <td>${temp}°C</td>
+    //   <td>${humidity}%</td>
+    //   <td>${windSpeed} m/s</td>
+    // `;
+    article.innerHTML = `
+    <h3 class="weather_forecast_day">${day} ${time}</h3>
+    <img src="${iconUrl}" alt="${item.weather[0].description}">
+    <p class="weather_forecast_results"> <span class="value">${temp}</span>&deg;C</p>
+    <p class="weather_forecast_results"> <span class="value">${humidity}</span>&deg;%</p>
+    <p class="weather_forecast_results"> <span class="value">${windSpeed}</span>&deg;m/s</p>
+  `;
+    forecastTable.appendChild(article);
   });
 }
 
