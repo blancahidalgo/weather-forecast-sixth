@@ -10,7 +10,7 @@ var apiUrlForecast = 'https://api.openweathermap.org/data/2.5/forecast';
 var cityNameInput = document.querySelector('#city');
 var searchButton = document.querySelector('.btn-search-today');
 var searchForecastButton = document.querySelector('.btn-search-forecast');
-var cityName = document.querySelector('#city-name');
+var cityName = document.querySelector('#city');
 var weatherIcon = document.querySelector('#weather-icon');
 var temperature = document.querySelector('#temperature');
 var humidity = document.querySelector('#humidity');
@@ -112,28 +112,47 @@ function getWeatherForecast(city) {
 
 
 // Event listener when using the button to retrieve Today's Forecast 
+// searchButton.addEventListener('click', () => {
+//   var city = cityNameInput.value.trim();
+//   cityNameInput.value = '';
+//   if (city) {
+//     getWeatherData(city);
+//   }
+// });
+
+// cityNameInput.addEventListener('keyup', event => {
+//   if (event.key === 'Enter') {
+//     const city = cityNameInput.value.trim();
+//     if (city) {
+//       getWeatherData(city);
+//     }
+//   }
+// });
+
+// // Event listener when using the button to retrieve the next 5 day Forecast 
+// searchForecastButton.addEventListener('click', () => {
+//   var city = cityNameInput.value.trim();
+//   cityNameInput.value = '';
+//   if (city) {
+//     getWeatherForecast(city);
+//   }
+// });
+
+// cityNameInput.addEventListener('keyup', event => {
+//   if (event.key === 'Enter') {
+//     const city = cityNameInput.value.trim();
+//     if (city) {
+//       getWeatherForecast(city);
+//     }
+//   }
+// });
+
+//Trying to merge both button functionalities into 1! 
 searchButton.addEventListener('click', () => {
   var city = cityNameInput.value.trim();
   cityNameInput.value = '';
   if (city) {
     getWeatherData(city);
-  }
-});
-
-cityNameInput.addEventListener('keyup', event => {
-  if (event.key === 'Enter') {
-    const city = cityNameInput.value.trim();
-    if (city) {
-      getWeatherData(city);
-    }
-  }
-});
-
-// Event listener when using the button to retrieve the next 5 day Forecast 
-searchForecastButton.addEventListener('click', () => {
-  var city = cityNameInput.value.trim();
-  cityNameInput.value = '';
-  if (city) {
     getWeatherForecast(city);
   }
 });
@@ -143,10 +162,7 @@ cityNameInput.addEventListener('keyup', event => {
     const city = cityNameInput.value.trim();
     if (city) {
       getWeatherForecast(city);
+      getWeatherForecast(city);
     }
   }
 });
-
-
-
-
