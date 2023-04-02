@@ -16,10 +16,25 @@ var temperature = document.querySelector('#temperature');
 var humidity = document.querySelector('#humidity');
 var windSpeed = document.querySelector('#wind-speed');
 var forecastTable = document.querySelector('#five-day-forecast');
+var searchHistoryContainer = document.querySelector('#search-history-container')
 
 // THIS IS FOR FUTURE WHEN ADDING LOCAL STORAGE
 var savedCities = [];  
 
+if (localStorage.getItem('searchHistory')) {
+  savedCities = JSON.parse(localStorage.getItem('searchHistory'))
+  displaySearchHistory()
+}
+
+function displaySearchHistory() {
+  searchHistoryContainer.innerHTML = ''
+  
+  for (let index = 0; index < savedCities.length; index++) {
+    var searchItem = document.createElement('div')
+    searchItem.textContent = savedCities[index]
+    searchHistoryContainer.appendChild(searchItem)
+  }
+}
 /* // Function to update the weather information in the HTML file */
     //this sets the text content --> 'cityName' element to the name of the city returned by the API 
     //'weatherIcon.src = xxx sets the source attribute of the 'weatherIcon' element in the URL 
@@ -46,7 +61,11 @@ function getWeatherData(city) {
   fetch(url)
     .then(response => response.json())
     .then(data => {
+      console.log('hit')
       updateWeatherData(data);
+      savedCities.push(city)
+      localStorage.setItem('searchHistory', JSON.stringify(savedCities))
+      displaySearchHistory()
     })
     .catch(error => {
       console.error('Error:', error);
@@ -105,11 +124,33 @@ function getWeatherForecast(city) {
     });
 }
 
-// This is the event listener to the searchButton element, which triggers a function when the button is clicked
-// This gets the value of the cityNameInput input field & removes any leading or trailing whitespace characters using the trim() method, and stores the resulting city name in the city variable
-// line 55 clears the 'cityNameInput' space/value so we can enter a new search in a clean space (SHOULD I ADD LOCA STORAGE HERE BEFORE CLEARING THE SEARCH??)
-// line 57 checks if a valid city name was entered / if true, the getWeatherdata(city); will execute! 
 
+
+
+// Event listener to get a response when searching for a city
+searchButton.addEventListener('click', () => {
+  var city = cityNameInput.value.trim();
+  cityNameInput.value = '';
+  if (city) {
+    getWeatherData(city);
+    getWeatherForecast(city);
+  }
+});
+
+cityNameInput.addEventListener('keyup', event => {
+  if (event.key === 'Enter') {
+    const city = cityNameInput.value.trim();
+    if (city) {
+      getWeatherForecast(city);
+      getWeatherForecast(city);
+    }
+  }
+});
+
+
+// cityNameInput.addEventListener('change', event => {
+//   cityChoice = event.target.value;
+// });
 
 // Event listener when using the button to retrieve Today's Forecast 
 // searchButton.addEventListener('click', () => {
@@ -146,23 +187,3 @@ function getWeatherForecast(city) {
 //     }
 //   }
 // });
-
-//Trying to merge both button functionalities into 1! 
-searchButton.addEventListener('click', () => {
-  var city = cityNameInput.value.trim();
-  cityNameInput.value = '';
-  if (city) {
-    getWeatherData(city);
-    getWeatherForecast(city);
-  }
-});
-
-cityNameInput.addEventListener('keyup', event => {
-  if (event.key === 'Enter') {
-    const city = cityNameInput.value.trim();
-    if (city) {
-      getWeatherForecast(city);
-      getWeatherForecast(city);
-    }
-  }
-});
