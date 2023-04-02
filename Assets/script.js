@@ -8,8 +8,8 @@ var apiUrlForecast = 'https://api.openweathermap.org/data/2.5/forecast';
 // Purpose of all variables called below are to get a reference to the input element with the ID or class and stores it into the called variable such as 'cityNameInput'
 
 var cityNameInput = document.querySelector('#city');
-var searchButton = document.querySelector('.btn-light');
-var searchForecastButton = document.querySelector('.btn-dark');
+var searchButton = document.querySelector('.btn-search-today');
+var searchForecastButton = document.querySelector('.btn-search-forecast');
 var cityName = document.querySelector('#city-name');
 var weatherIcon = document.querySelector('#weather-icon');
 var temperature = document.querySelector('#temperature');
@@ -84,7 +84,7 @@ function updateWeatherForecast(data) {
   });
 }
 
-// this function will fetch weather data just like in the main script.js file 
+// this function will fetch weather data  
 function getWeatherForecast(city) {
   var url = `${apiUrlForecast}?q=${city}&appid=${apiKey}`;
   fetch(url)

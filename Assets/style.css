@@ -31,7 +31,7 @@ body {
     padding: 15px 10px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(195, 188, 188);
+    background-color: rgb(155, 180, 215);
     font-size: 20px;
     color: inherit;
     margin-bottom:20px;
@@ -57,8 +57,8 @@ body {
 
 /* From here onwards we sre styling the data that pops into Todays Weather section */
 .weather_city {
-    font-size:36px;
-    font-weight: 600;
+    font-size: 30px;
+    font-weight: 550;
     margin: 20px 0;
 }
 
@@ -97,7 +97,7 @@ body {
 }
 
 .weather_forecast_item {
-  background-color:rgb(244, 236, 236);
+  background-color:rgb(155, 180, 215);
   border-radius: 10px;
   margin: 0 10px 10px;
   padding: 30px 5px 20px;
